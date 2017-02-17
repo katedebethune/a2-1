@@ -1,4 +1,13 @@
-<?php require_once("phpfiles/inputsLogic.php"); ?>
+<?php require_once('phpfiles/Tools.php'); ?>
+<?php require_once('phpfiles/Form.php'); ?>
+<?php require_once('phpfiles/WorldCountries.php'); ?>
+<?php
+    use DWA\Tools;
+    use DWA\Form;
+    if($_POST) {
+        // Tools::dump($_POST); # Output from logic, only for debugging purposes to see the contents of POST
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
