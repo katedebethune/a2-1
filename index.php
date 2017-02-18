@@ -4,8 +4,9 @@
 <?php
     use DWA\Tools;
     use DWA\Form;
-    if($_POST) {
-        // Tools::dump($_POST); # Output from logic, only for debugging purposes to see the contents of POST
+    use DWA\WorldCountries;
+    if($_GET) {
+        // Tools::dump($_GET); # Output from logic, only for debugging purposes to see the contents of POST
     }
 ?>
 <!DOCTYPE html>

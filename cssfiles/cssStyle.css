@@ -97,6 +97,11 @@ h1, h2, h3 {
     font-size:1.1rem;
 }
 
+.floatingInput {
+    float: left;
+    margin: 5px;
+}
+
 legend {
     color: green;
 }
@@ -105,6 +110,10 @@ legend {
     font-weight: bold;
     font-size:1.5rem;
     color: green;
+}
+
+#capital {
+    width: 20px;
 }
 
 /* default for a button background and text color */
@@ -126,7 +135,6 @@ input[type=submit]:hover {
 form {
     /* Just to center the form on the page */
     margin: 0 auto;
-    // width: 600px;
     /* To see the outline of the form */
     padding: 1em;
     border: 1px solid #CCC;
@@ -137,15 +145,7 @@ form div + div {
     margin-top: 1em;
 }
 
-label {
-    /* To make sure that all labels have the same size and are properly aligned */
-    display: inline-block;
-    width: 90px;
-    text-align: right;
-    margin-right: 5px;
-}
-
-input {
+.inputTopMargin {
     margin-top: 3px;
 }
 
@@ -153,11 +153,8 @@ input, textarea {
     /* To make sure that all text fields have the same font settings
     By default, textareas have a monospace font */
     font: 1em sans-serif;
-
     /* To give the same size to all text fields */
-    width: 300px;
     box-sizing: border-box;
-
     /* To harmonize the look & feel of text field border */
     border: 1px solid #999;
 }
@@ -170,7 +167,6 @@ input:focus, textarea:focus {
 textarea {
   /* To properly align multiline text fields with their labels */
   vertical-align: top;
-
   /* To give enough room to type some text */
   height: 5em;
 }
