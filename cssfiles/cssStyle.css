@@ -91,7 +91,7 @@ h1, h2, h3 {
 
 #flagFieldSet {
     border-radius: 1em;
-    border: thin solid #CCC;
+    border: thin solid green;
     color: green;
 	  font-weight: bold;
     font-size:1.1rem;
@@ -134,19 +134,16 @@ input[type=submit]:hover {
 /* Form related MDN recommended styles */
 form {
     /* Just to center the form on the page */
-    margin: 0 auto;
+    margin: 2px;
     /* To see the outline of the form */
     padding: 1em;
-    border: 1px solid #CCC;
+    border: 1px solid green;
     border-radius: 1em;
-}
-
-form div + div {
-    margin-top: 1em;
 }
 
 .inputTopMargin {
     margin-top: 3px;
+    clear: left;
 }
 
 input, textarea {
