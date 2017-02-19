@@ -59,8 +59,8 @@ body {
                       url("/images/worldCountriesByFlags.jpg");
     background-repeat: no-repeat, no-repeat, no-repeat;
     background-position: left top, center 2px, right top, top right;;
-    background-size: 100px, 160px, 70px, auto;
-    background-color: white;
+    background-size: 100px, 160px, 70px, 90%;
+    background-color: #3397b0;
 }
 
 #flags img {
