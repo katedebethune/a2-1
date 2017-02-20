@@ -58,8 +58,8 @@ body {
                       url("/images/centosBlue.png"),
                       url("/images/worldCountriesByFlags.jpg");
     background-repeat: no-repeat, no-repeat, no-repeat;
-    background-position: left top, center 2px, right top, center 150px;
-    background-size: 100px, 160px, 70px, 80%;
+    background-position: left top, center 2px, right top, center 300px;
+    background-size: 100px, 160px, 70px, 60%;
     background-color: #3397b0;
 }
 
