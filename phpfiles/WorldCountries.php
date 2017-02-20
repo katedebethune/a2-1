@@ -8,7 +8,12 @@ class WorldCountries {
 	* Properties
 	*/
     private $flags;
-    private $continents;
+    private $countriesAfrica;
+    private $countriesAsia;
+    private $countriesEurope;
+    private $countriesNorthAmerica;
+    private $countriesOceania;
+    private $countriesSouthAmerica;
     private $populations;
     private $capitals;
 
@@ -16,38 +21,34 @@ class WorldCountries {
     /**
 	* a Flag and the country (array)
 	*/
-    public function __construct() {
+    public function __construct($jsonFlagsFile, $jsonPopulationFile) {
 
         /* get the flags for the countries */
-        $dataJson = file_get_contents($jsonFlags);
-        $this->flags = json_decode($dataJson , true);
+        $this->flags = json_decode(file_get_contents($jsonFlagsFile) , true);
 
-        /* get the continents for the countries */
-        $dataJson = file_get_contents($jsonContinents);
-        $this->$continents= json_decode($dataJson , true);
+        /* retrieve each region's countries from flags */
 
         /* get the populations for the countries */
-        $dataJson = file_get_contents($jsonPopulations);
-        $this->$populations= json_decode($dataJson , true);
+        $this->populations = json_decode(file_get_contents($jsonPopulationFile) , true);
 
-        /* get the capitals for the countries */
-        $dataJson = file_get_contents($jsonCapitals);
-        $this->$capitals= json_decode($dataJson , true);
-
+        /* get the capitals for the countries
+        $dataJson = file_get_contents('countriesLanguages.csv');
+        $this->capitals = json_decode($dataJson , true);
+        */
     }
 
     /**
 	* Getter for $flags property
 	*/
     public function getFlags() {
-        return $this->$flags;
+        return $this->flags;
     }
 
     /**
 	* Getter for $continents property
 	*/
     public function getContinents() {
-        return $this->$continents;
+        return $this->continents;
     }
 
 
@@ -55,7 +56,7 @@ class WorldCountries {
 	* Getter for $populations property
 	*/
     public function getPopulations() {
-        return $this->$populations;
+        return $this->populations;
     }
 
 
@@ -63,7 +64,7 @@ class WorldCountries {
 	* Getter for $capitals property
 	*/
     public function getCapitals() {
-        return $this->$capitals;
+        return $this->capitals;
     }
 
 } # end of class
