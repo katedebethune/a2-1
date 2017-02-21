@@ -8,3 +8,6 @@
         <link rel="icon" href="images/favicon.ico" type="image/x-icon">
         <!-- css files -->
         <link rel="stylesheet" href="cssfiles/cssStyle.css">
+        <!-- js files -->
+        <script type="text/javascript" src="jsfiles/addEvent.js"></script>
+        <script type="text/javascript" src="jsfiles/jsFunctions.js"></script>

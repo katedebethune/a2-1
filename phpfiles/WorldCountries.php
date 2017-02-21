@@ -5,66 +5,59 @@ namespace DWA;
 class WorldCountries {
 
     /**
-	* Properties
-	*/
+    	* Properties
+      */
     private $flags;
-    private $countriesAfrica;
-    private $countriesAsia;
-    private $countriesEurope;
-    private $countriesNorthAmerica;
-    private $countriesOceania;
-    private $countriesSouthAmerica;
     private $populations;
     private $capitals;
+    private $languages;
 
 
     /**
-	* a Flag and the country (array)
-	*/
-    public function __construct($jsonFlagsFile, $jsonPopulationFile) {
+	    *  Each (6) Region and the Countries in it (array)
+	    */
+    public function __construct($jsonFlagsFile, $jsonPopulationsFile, $jsonCapitalsFile, $jsonLanguagesFile) {
 
-        /* get the flags for the countries */
+        /* get the flags of the countries */
         $this->flags = json_decode(file_get_contents($jsonFlagsFile) , true);
 
-        /* retrieve each region's countries from flags */
+        /* get the populations of the countries */
+        $this->populations = json_decode(file_get_contents($jsonPopulationsFile) , true);
 
-        /* get the populations for the countries */
-        $this->populations = json_decode(file_get_contents($jsonPopulationFile) , true);
+        /* get the capitals of the countries */
+        $this->capitals = json_decode(file_get_contents($jsonCapitalsFile) , true);
 
-        /* get the capitals for the countries
-        $dataJson = file_get_contents('countriesLanguages.csv');
-        $this->capitals = json_decode($dataJson , true);
-        */
+        /* get the languages of the countries */
+        $this->languages = json_decode(file_get_contents($jsonLanguagesFile) , true);
     }
 
     /**
-	* Getter for $flags property
-	*/
+	    * Getter for $flags property
+	    */
     public function getFlags() {
         return $this->flags;
     }
 
     /**
-	* Getter for $continents property
-	*/
-    public function getContinents() {
-        return $this->continents;
-    }
-
-
-    /**
-	* Getter for $populations property
-	*/
+	    * Getter for $populations property
+	    */
     public function getPopulations() {
         return $this->populations;
     }
 
 
     /**
-	* Getter for $capitals property
-	*/
+      * Getter for $capitals property
+	    */
     public function getCapitals() {
         return $this->capitals;
+    }
+
+    /**
+      * Getter for $languages property
+	    */
+    public function getLanguages() {
+        return $this->languages;
     }
 
 } # end of class

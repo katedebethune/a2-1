@@ -58,23 +58,24 @@ body {
                       url("/images/centosBlue.png"),
                       url("/images/worldCountriesByFlags.jpg");
     background-repeat: no-repeat, no-repeat, no-repeat;
-    background-position: left top, center 2px, right top, center 300px;
+    background-position: left top, center 2px, right top, center 400px;
     background-size: 100px, 160px, 70px, 60%;
     background-color: #3397b0;
 }
 
-#flags img {
-    width: 35px;
-    height: 25px;
+.plainFlags {
+    width: 45px;
+    height: 35px;
 }
 
 .selectedFlags {
-    width: 55px;
-    height: 45px;
+    width: 6%;
+    height: 4%px;
+    border: 1px dotted lightgray;
 }
 
 #worldFlags {
-    background-color: white;
+    /* background-color: white; */
 }
 
 h1, h2, h3 {
@@ -90,16 +91,15 @@ h1, h2, h3 {
 
 #worldFlags {
     margin-top: 1%;
-    margin-right: 17%;
-    margin-left: 17%;
+    margin-right: 10%;
+    margin-left: 10%;
 }
 
 #flagFieldSet {
-    border-radius: 1em;
-    border: thin solid lightgray;
     color: black;
 	  font-weight: bold;
     font-size:1.1rem;
+    border-style: none;
 }
 
 .floatingInput {
@@ -114,7 +114,7 @@ legend {
 #flagTitle {
     font-weight: bold;
     font-size:1.5rem;
-    color: red;
+    color: black;
 }
 
 #capital {
