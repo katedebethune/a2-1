@@ -1,18 +1,19 @@
 <!-- Beginning of the Flag Selection; -->
                 <div id="worldFlags" class="center">
                     <p id="flagTitle">Select a Flag to Find the Country in <?=$region?></p>
+                    <p id="informationPanel">Please select a population and/or language value and/or enter the first letter of the Capital City</p>
                     <div id="flags">
-                        <!-- flags img statements are read via PHP through a JSON file -->
-                        <?php while ($flagTitleSeq < $howManyFlags) { ?>
-                        <!--  -->
-                            <img id="flag<?=$flagTitleSeq?>"
-                                <?php if ($selectedFlag == ("flag" . $flagTitleSeq)) : ?>
-                                    class="selectedFlag"
-                                <?php else: ?>
-                                    class="plainFlags"
-                                <?php endif; ?>
-                                src="images/smallFlags/<?=$flagOfCountries['countries'][$flagTitleSeq] . '.png'?>"
-                                alt="<?=$flagOfCountries['countries'][$flagTitleSeq++]?>"> <!-- ++ must be here only -->
+                    <!-- flags img statements are read via PHP through a JSON file -->
+                    <?php while ($flagTitleSeq < $howManyFlags) { ?>
+                    <!--  -->
+                        <img id="flag<?=$flagTitleSeq?>"
+                        <?php if ($selectedFlag == ("flag" . $flagTitleSeq)) : ?>
+                            class="selectedFlag"
+                        <?php else: ?>
+                            class="plainFlags"
+                        <?php endif; ?>
+                            src="images/smallFlags/<?=$flagOfCountries['countries'][$flagTitleSeq] . '.png'?>"
+                            alt="<?=$flagOfCountries['countries'][$flagTitleSeq++]?>"> <!-- ++ must be here only -->
                         <?php } ?>
                     <!--  -->
                     </div>
@@ -21,7 +22,7 @@
                         <fieldset id="flagFieldSet">
                             <input type='hidden' name='savedRegion'>
                             <input id="savedFlagId" type='hidden' name='selectedFlag' value='<?=$selectedFlag?>'>
-                            <div class="floatingInput"><label><input id="africa" type='radio' name='region' value='Africa' CHECKED
+                            <div class="floatingInput"><label><input id="africa" type='radio' name='region' value='Africa'
                                 <?php if ($region == 'Africa') echo 'CHECKED'?>>  Africa</label></div>
                             <div class="floatingInput"><label><input id='asia' type='radio' name='region' value='Asia'
                                 <?php if ($region == 'Asia') echo 'CHECKED'?>> Asia</label></div>
@@ -34,7 +35,7 @@
                             <div class="floatingInput"><label><input id="southAmerica" type='radio' name='region' value='South America'
                                 <?php if ($region == 'South America') echo 'CHECKED'?>> South America</label></div>
                             <div class="floatingInput inputTopMargin"><label>Population
-                                <select id='population' name='population' id='population'>
+                                <select id='population' name='population'>
                                     <option value='choose' <?php if ($selectedPopulation == 'choose') echo 'SELECTED'?>>Choose one...</option>
                                     <option value='1' <?php if ($selectedPopulation == '1') echo 'SELECTED'?>>0 to 1 Million</option>
                                     <option value='1,5' <?php if ($selectedPopulation == '1,5') echo 'SELECTED'?>>1 to 5 Millions</option>
@@ -59,22 +60,30 @@
                             <!-- options id read via PHP through a JSON file -->
                             <div class='floatingInput'>
                                 <label>Language
-                                    <select id="language" name='language' id='language'>
+                                    <select id="language" name='language'>
+                                        <!-- Add Spoken Languages foreach ($arr as &$value) -->
                                         <option value='choose' <?php if ($selectedLanguage == 'choose') echo 'SELECTED'?>>Choose one...</option>
-                                        <option value='English' <?php if ($selectedLanguage == 'English') echo 'SELECTED'?>>English</option>
+                                        <?php foreach ($uniqueLanguageArray as $language) : ?>
+                                        <!-- -->
+                                        <option value='<?=$language?>' <?php if ($selectedLanguage == $language) echo 'SELECTED'?> ><?=$language?></option>
+                                        <?php endforeach; ?>
+                                        <!-- Add Spoken Languages foreach ($arr as &$value) -->
                                     </select>
                                 </label>
                             </div>
                             <!-- only one letter as the first of a capital name can be entered -->
                             <div class="floatingInput">
                                 <label>Capital
-                                    <input id="capital" type='text' name='capital' id='capital' value='<?php echo $selectedCapitalLetter ?>'>
+                                    <input id="capital" type='text' name='capital' value='<?=$selectedCapitalLetter ?>'>
                                 </label>
                             </div>
+
                         </fieldset>
+
                         <input id="submitButton" type='submit' value="My Score">
                         <button type="button" id="rulesButton">Rules</button>
                         <a class= "resetAnchor" href="/" role="button">Reset</a>
+
                     </form>
 
                 </div>

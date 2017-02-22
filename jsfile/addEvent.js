@@ -8,12 +8,6 @@ function windowLoaded()
     // How many Flags in <div id="flags"
     numberOfFlags = document.getElementById("flags").getElementsByTagName("img").length;
     /*
-        If a Flag is Clicked: Make it bigger size with a Border (CSS class)
-        Retrieve all the Flags (Page is Loaded for a Region and loop to add onclick (later press enter key)
-        In production, the Flags should block any right mouse click to see the Source or Image source
-    */
-
-    /*
         A Radio Button or A Select/Option change occured, add the events to trigger Submit Button click
     */
     // Regions
@@ -74,7 +68,8 @@ function windowLoaded()
        Rules Button Click event
     */
     document.getElementById("rulesButton").onclick = function(event) {
-        alert("\nSelected Region's Country Flags will be displayed.\n\n" +
+        alert("\nSelected Region's Country Flags will be displayed.\n" +
+              "Africa, the first region is checked to start with.\n\n" +
               "The goal is to filter the Flags up until Only One Left\n" +
               "The number of the Property selections will determin the final Score.\n\n" +
               "Whenever there are less than 6 Flags left, the Country Names will be displayed in the Status area.\n" +
