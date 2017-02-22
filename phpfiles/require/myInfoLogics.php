@@ -15,10 +15,10 @@
     $selectedLanguage = "choose";
     $selectedCapitalLetter = "";
 
-    $worldCountries = new WorldCountries('jsonFiles/countriesRegions.json',
-                                         'jsonFiles/countriesPopulations.json',
-                                         'jsonFiles/countriesCapitals.json',
-                                         'jsonFiles/countriesLanguages.json');
+    $worldCountries = new WorldCountries('jsonfiles/countriesRegions.json',
+                                         'jsonfiles/countriesPopulations.json',
+                                         'jsonfiles/countriesCapitals.json',
+                                         'jsonfiles/countriesLanguages.json');
     if($_GET)
     {
         $region = $_GET['region'];
