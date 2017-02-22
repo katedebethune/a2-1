@@ -9,5 +9,5 @@
         <!-- css files -->
         <link rel="stylesheet" href="cssfiles/cssStyle.css">
         <!-- js files -->
-        <script type="text/javascript" src="jsfiles/addEvent.js"></script>
-        <script type="text/javascript" src="jsfiles/jsFunctions.js"></script>
+        <script type="text/javascript" src="jsfile/addEvent.js"></script>
+        <script type="text/javascript" src="jsfile/jsFunctions.js"></script>

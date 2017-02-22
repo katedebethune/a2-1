@@ -1,7 +1,7 @@
 <?php
-    require_once('phpfiles/Tools.php');
-    require_once('phpfiles/Form.php');
-    require_once('phpfiles/WorldCountries.php');
+    require_once('phpfile/Tools.php');
+    require_once('phpfile/Form.php');
+    require_once('phpfile/WorldCountries.php');
 
     use DWA\Tools;
     use DWA\Form;
@@ -15,10 +15,10 @@
     $selectedLanguage = "choose";
     $selectedCapitalLetter = "";
 
-    $worldCountries = new WorldCountries('jsonfiles/countriesRegions.json',
-                                         'jsonfiles/countriesPopulations.json',
-                                         'jsonfiles/countriesCapitals.json',
-                                         'jsonfiles/countriesLanguages.json');
+    $worldCountries = new WorldCountries('jsonfile/countriesRegions.json',
+                                         'jsonfile/countriesPopulations.json',
+                                         'jsonfile/countriesCapitals.json',
+                                         'jsonfile/countriesLanguages.json');
     if($_GET)
     {
         $region = $_GET['region'];
