@@ -14,13 +14,24 @@ function positionCurser(fieldName)
 
 function selectAFlag(event)
 {
-  // if savedFlagId is not null, remove the class; save the flag id as the savedFlagId and add a "the" class
-  if (savedFlagId != null)
-  {
-      document.getElementById(savedFlagId).classList.remove("selectedFlags");
-      document.getElementById(savedFlagId).setAttribute("class", "plainFlags");
-  }
-  document.getElementById(event.target.id).classList.remove("plainFlags");
-  document.getElementById(event.target.id).setAttribute("class", "selectedFlags");
-  savedFlagId = event.target.id;
+    // if a flag has a selectedFlags class, remove it: PHP Submit initialize all JS variables
+    loopNumber = 0;
+    while (loopNumber < numberOfFlags)
+    {
+        document.getElementById("flag"+loopNumber).classList.remove("selectedFlags");
+        document.getElementById("flag"+loopNumber).setAttribute("class", "plainFlags");
+        loopNumber++;
+    }
+    document.getElementById(event.target.id).classList.remove("plainFlags");
+    document.getElementById(event.target.id).setAttribute("class", "selectedFlags");
+    document.getElementById("savedFlagId").value = event.target.id;
+    alert(document.getElementById("savedFlagId").value);
+}
+
+function resetSelectionValues()
+{
+    document.getElementById("savedFlagId").value = -1;
+    document.getElementById('population').getElementsByTagName('option')[0].selected = 'selected';
+    document.getElementById('language').getElementsByTagName('option')[0].selected = 'selected';
+    document.getElementById("capital").value = "";
 }

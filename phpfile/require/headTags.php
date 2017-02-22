@@ -11,3 +11,4 @@
         <!-- js files -->
         <script type="text/javascript" src="jsfile/addEvent.js"></script>
         <script type="text/javascript" src="jsfile/jsFunctions.js"></script>
+        <script type="text/javascript" src="jsfile/jsVariables.js"></script>

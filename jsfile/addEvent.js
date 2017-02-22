@@ -2,10 +2,6 @@
 
 window.onload = function() {windowLoaded()};
 
-var numberOfFlags = 0;
-var loopNumber = 0;
-var savedFlagId = null;
-
 function windowLoaded()
 {
     /* Window is loaded, time to add the Events */
@@ -21,12 +17,30 @@ function windowLoaded()
         A Radio Button or A Select/Option change occured, add the events to trigger Submit Button click
     */
     // Regions
-    document.getElementById("africa").onchange = function(event) { triggerAMouseEvent("submitButton"); };
-    document.getElementById("asia").onchange = function(event) { triggerAMouseEvent("submitButton"); };
-    document.getElementById("europe").onchange = function(event) { triggerAMouseEvent("submitButton"); };
-    document.getElementById("northAmerica").onchange = function(event) { triggerAMouseEvent("submitButton"); };
-    document.getElementById("oceania").onchange = function(event) { triggerAMouseEvent("submitButton"); };
-    document.getElementById("southAmerica").onchange = function(event) { triggerAMouseEvent("submitButton"); };
+    document.getElementById("africa").onchange = function(event) {
+        resetSelectionValues();
+        triggerAMouseEvent("submitButton");
+    };
+    document.getElementById("asia").onchange = function(event) {
+        resetSelectionValues();
+        triggerAMouseEvent("submitButton");
+    };
+    document.getElementById("europe").onchange = function(event) {
+        resetSelectionValues();
+        triggerAMouseEvent("submitButton");
+    };
+    document.getElementById("northAmerica").onchange = function(event) {
+        resetSelectionValues();
+        triggerAMouseEvent("submitButton");
+    };
+    document.getElementById("oceania").onchange = function(event) {
+        resetSelectionValues();
+        triggerAMouseEvent("submitButton");
+    };
+    document.getElementById("southAmerica").onchange = function(event) {
+        resetSelectionValues();
+        triggerAMouseEvent("submitButton");
+    };
     // Population
     document.getElementById("population").onchange = function(event) { triggerAMouseEvent("submitButton"); };
     // Language
@@ -46,7 +60,7 @@ function windowLoaded()
         {
             document.getElementById("capital").value = "";
         }
-    }
+    };
     // When a Flag is Clicked, will be Selected: Bigger Size and Framed
     while (loopNumber < numberOfFlags)
     {
@@ -57,16 +71,13 @@ function windowLoaded()
         loopNumber++;
     }
     /*
-       Rules Button Click event: See if $_POST use instead of $_GET will eliminate reload/refresh issues
-       This should be a Tab Page to Replace the Flags with the release II
+       Rules Button Click event
     */
     document.getElementById("rulesButton").onclick = function(event) {
-        alert("Selected Region's Country Flags will be displayed.\n\n" +
+        alert("\nSelected Region's Country Flags will be displayed.\n\n" +
               "The goal is to filter the Flags up until Only One Left\n" +
               "The number of the Property selections will determin the final Score.\n\n" +
               "Whenever there are less than 6 Flags left, the Country Names will be displayed in the Status area.\n" +
-              "Either keep filtering to the last Flag or choose one as the final answer (guessing).\n\n" +
-              "To Reset/Reload, Please re-enter a2.mywebbench.com again."
-            );
+              "Either keep filtering to the last Flag or choose one as the final answer (guessing).\n\n");
     }
 }

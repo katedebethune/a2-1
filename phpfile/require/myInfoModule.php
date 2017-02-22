@@ -5,9 +5,14 @@
                         <!-- flags img statements are read via PHP through a JSON file -->
                         <?php while ($flagTitleSeq < $howManyFlags) { ?>
                         <!--  -->
-                        <img id="flag<?=$flagTitleSeq?>" class="plainFlags"
-                             src="images/smallFlags/<?=$flagOfCountries['countries'][$flagTitleSeq] . '.png'?>"
-                             alt="<?=$flagOfCountries['countries'][$flagTitleSeq++]?>"> <!-- ++ must be here only -->
+                            <img id="flag<?=$flagTitleSeq?>"
+                                <?php if ($selectedFlag == ("flag" . $flagTitleSeq)) : ?>
+                                    class="selectedFlag"
+                                <?php else: ?>
+                                    class="plainFlags"
+                                <?php endif; ?>
+                                src="images/smallFlags/<?=$flagOfCountries['countries'][$flagTitleSeq] . '.png'?>"
+                                alt="<?=$flagOfCountries['countries'][$flagTitleSeq++]?>"> <!-- ++ must be here only -->
                         <?php } ?>
                     <!--  -->
                     </div>
@@ -15,6 +20,7 @@
                     <form method='GET' action='/'>
                         <fieldset id="flagFieldSet">
                             <input type='hidden' name='savedRegion'>
+                            <input id="savedFlagId" type='hidden' name='selectedFlag' value='<?=$selectedFlag?>'>
                             <div class="floatingInput"><label><input id="africa" type='radio' name='region' value='Africa' CHECKED
                                 <?php if ($region == 'Africa') echo 'CHECKED'?>>  Africa</label></div>
                             <div class="floatingInput"><label><input id='asia' type='radio' name='region' value='Asia'
@@ -68,6 +74,7 @@
                         </fieldset>
                         <input id="submitButton" type='submit' value="My Score">
                         <button type="button" id="rulesButton">Rules</button>
+                        <a class= "resetAnchor" href="/" role="button">Reset</a>
                     </form>
 
                 </div>

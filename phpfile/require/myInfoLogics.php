@@ -14,6 +14,8 @@
     $selectedPopulation = "choose";
     $selectedLanguage = "choose";
     $selectedCapitalLetter = "";
+    $selectedFlag = -1;
+    $languageArray = [];
 
     $worldCountries = new WorldCountries('jsonfile/countriesRegions.json',
                                          'jsonfile/countriesPopulations.json',
@@ -22,6 +24,7 @@
     if($_GET)
     {
         $region = $_GET['region'];
+        $selectedFlag = $_GET['selectedFlag'];
         $savedRegion = $_GET['savedRegion'];
         $selectedPopulation = $_GET['population'];
         $selectedLanguage = $_GET['language'];
@@ -37,9 +40,18 @@
         $region = 'Africa'; // Default start up Region
         $savedRegion = 'Africa';
     }
+    // Get the Region's flagOfCountries
     $flagOfCountries = $worldCountries->getFlags()[$region];
     // Get Each Country's Spoken Languages into an array to display as the Language Drop-Down
-    // get the count of the languages from this array
+    $languageOfCountries = $worldCountries->getLanguages();
+    foreach ($flagOfCountries as $key => $value)
+    {   Tools::dump($key);
+        if (!array_key_exists($key, $languageArray))
+        {
+            $languageArray[] = $languageOfCountries[$key];
+        }
+    }
+    // Tools::dump($languageArray);
     /*
         If the Selected Flag's Country is more or less than selected Population
         Display an Error (Score will be adjusted) and Ignore the selection
