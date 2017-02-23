@@ -68,6 +68,14 @@ body {
     height: 35px;
 }
 
+.leftCountries {
+    width: 79px;
+    height: 47px;
+    color: blue;
+    margin-left: 3px;
+    border: 2px groove red;
+}
+
 .selectedFlags {
     width: 79px;
     height: 47px;
@@ -95,6 +103,24 @@ h1, h2, h3 {
 
 .yellowColor {
     color: yellow;
+}
+
+.scorePanel {
+    font-weight: bold;
+    color: red;
+    background-color: yellow;
+    font-size: 26px;
+    width: 250px;
+    text-align: center;
+}
+
+.chooseOneLeft {
+    font-weight: bold;
+    color: red;
+    background-color: yellow;
+    font-size: 20px;
+    width: 500px;
+    text-align: center;
 }
 
 .congratulationPanel {

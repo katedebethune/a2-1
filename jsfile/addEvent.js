@@ -72,7 +72,6 @@ function windowLoaded()
               "Africa, the first region is checked to start with.\n\n" +
               "The goal is to filter the Flags up until Only One Left\n" +
               "The number of the Property selections will determin the final Score.\n\n" +
-              "Whenever there are less than 6 Flags left, the Country Names will be displayed in the Status area.\n" +
-              "Either keep filtering to the last Flag or choose one as the final answer (guessing).\n\n");
+              "Whenever there are less than 6 Flags left, the Country Names will be displayed in the Status area.\n");
     }
 }

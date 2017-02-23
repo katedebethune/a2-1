@@ -26,6 +26,7 @@
                         <fieldset id="flagFieldSet">
                             <input type='hidden' name='savedRegion'>
                             <input id="savedFlagId" type='hidden' name='selectedFlag' value='<?=$selectedFlag?>'>
+                            <input id="trialCount" type='hidden' name='trialCount' value='<?=$trialCount?>'>
                             <div class="floatingInput"><label><input id="africa" type='radio' name='region' value='Africa'
                                 <?php if ($region == 'Africa') echo 'CHECKED'?>>  Africa</label></div>
                             <div class="floatingInput"><label><input id='asia' type='radio' name='region' value='Asia'
@@ -56,7 +57,7 @@
                                     <option value='150,200' <?php if ($selectedPopulation == '150,200') echo 'SELECTED'?>>150 to 200 Millions</option>
                                     <option value='200,250' <?php if ($selectedPopulation == '200,250') echo 'SELECTED'?>>200 to 250 Millions</option>
                                     <option value='250,300' <?php if ($selectedPopulation == '250,300') echo 'SELECTED'?>>250 to 300 Millions</option>
-                                    <option value='300-500' <?php if ($selectedPopulation == '300-500') echo 'SELECTED'?>>300 to 500 Millions</option>
+                                    <option value='300,500' <?php if ($selectedPopulation == '300-500') echo 'SELECTED'?>>300 to 500 Millions</option>
                                     <option value='500,1000' <?php if ($selectedPopulation == '500,1000') echo 'SELECTED'?>>500 Millions to 1 Billion</option>
                                     <option value='1000,2000' <?php if ($selectedPopulation == '1000,2000') echo 'SELECTED'?>>1 to 2 Billions</option>
                                 </select></label>
@@ -84,7 +85,7 @@
 
                         </fieldset>
 
-                        <input id="submitButton" type='submit' value="My Score">
+                        <input id="submitButton" type='submit' value="Status">
                         <button type="button" id="rulesButton">Rules</button>
                         <a class= "resetAnchor" href="/" role="button">Reset</a>
 

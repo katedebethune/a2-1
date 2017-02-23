@@ -23,6 +23,7 @@
     $capitalArray = []; // PHP unlink (flags) use
     $populationArray = []; // PHP unlink (flags) use
     $lessThan6Flags = -1;
+    $trialCount = 0;
 
     $worldCountries = new WorldCountries('jsonfile/countriesRegions.json',
                                          'jsonfile/countriesPopulations.json',
@@ -30,12 +31,14 @@
                                          'jsonfile/countriesLanguages.json');
     if($_GET)
     {
-        $region = $_GET['region'];
-        $selectedFlag = $_GET['selectedFlag'];
-        $savedRegion = $_GET['savedRegion'];
-        $selectedPopulation = $_GET['population'];
-        $selectedLanguage = $_GET['language'];
-        $selectedCapitalLetter = strtoupper($form->sanitize($_GET['capital']));
+        $region = $form->get('region');
+        $selectedFlag = $form->get('selectedFlag');
+        $savedRegion = $form->get('savedRegion');
+        $selectedPopulation = $form->get('population');
+        $selectedLanguage = $form->get('language');
+        $selectedCapitalLetter = strtoupper($form->sanitize($form->get('capital')));
+        $trialCount = $form->get('trialCount');
+        $trialCount++; // increment one..
 
         if ($savedRegion != $region)
         {
@@ -81,7 +84,7 @@
     if ($selectedFlag != -1 && $selectedPopulation != "choose")
     {
         $selectedCountry = $flagOfCountries['countries'][substr($selectedFlag,4)];
-        if ($populationOfCountries[$selectedCountry]["population"] != $selectedPopulation) // will be less than or greater than....
+        if (!populationWithInRange($populationOfCountries[$selectedCountry]["population"], $selectedPopulation))
         {
             // This is an error: Incorrect Population Selection...
             $selectedPopulationError = true;
@@ -90,7 +93,11 @@
         {
             // Loop to unlink any country does fit into the population criteria
             foreach ($flagOfCountries["countries"] as &$country) :
-                if ($populationOfCountries[$country]['population'] != $selectedPopulation)  // will be less than or greater than....
+                if ($country == null)
+                {
+                    // Do nothing (added here in order not to condition with two negative if statements: !null !equal)
+                }
+                else if (!populationWithInRange($populationOfCountries[$country]['population'], $selectedPopulation))
                 {
                     $country = null;
                 }
@@ -116,7 +123,11 @@
         {
             // Loop to unlink any country does not speak the selected language
             foreach ($flagOfCountries["countries"] as &$country) :
-                if ($languageOfCountries[$country]['language'] != $selectedLanguage)
+                if ($country == null)
+                {
+                    // Do nothing
+                }
+                else if ($languageOfCountries[$country]['language'] != $selectedLanguage)
                 {
                     $country = null;
                 }
@@ -142,7 +153,11 @@
         {
             // Loop to unlink any country does not speak the selected language; skip if alrady is null
             foreach ($flagOfCountries["countries"] as &$country) :
-                if ($country != null && substr($capitalOfCountries[$country]["capital"], 0,1) != $selectedCapitalLetter)
+                if ($country == null)
+                {
+                    // Do nothing
+                }
+                else if (substr($capitalOfCountries[$country]["capital"], 0,1) != $selectedCapitalLetter)
                 {
                     $country = null;
                 }
@@ -170,6 +185,10 @@
     {
         $countryCapital = $capitalOfCountries[$selectedCountry]["capital"];
         $countryPopulation = $populationOfCountries[$selectedCountry]["population"];
+        if ($selectedLanguage == "choose")
+        {
+            $selectedLanguage = $languageOfCountries[$selectedCountry]['language'];
+        }
     }
     // Error and Status Panel Configuration
     $statusPanelHTML = "<!-- -->";
@@ -192,6 +211,41 @@
     elseif ($lessThan6Flags == 1)
     {
         $statusPanelHTML = '<p class="congratulationPanel "><span class="yellowColor">Congradulation!!!</span> the Country is Found: <span class="yellowColor">' .
-                         $selectedCountry . '</span>, Capital: <span class="yellowColor">' . $countryCapital . '</span>, Language: ' .
-                         '<span class="yellowColor">' . $selectedLanguage . '</span> and Population: <span class="yellowColor">' . $countryPopulation . '</span></p>';
+                         $selectedCountry . '</span>, Capital: <span class="yellowColor">' . $countryCapital . '</span>, Language: <span class="yellowColor">' .
+                         $selectedLanguage . '</span> and Population: <span class="yellowColor">' . $countryPopulation . '</span></p>' .
+                         '<p class="scorePanel">Your Score: ' . (100-$trialCount) . '</p>';
+    }
+    else if ($lessThan6Flags < 6)
+    {
+      $statusPanelHTML = '<p class="chooseOneLeft"> Remaining Countries <br/>' . getTheCountryNames($flagOfCountries)  . '</p>';
+    }
+
+    // is the selected Flag's country's population is within the selected population RangeException
+    function populationWithInRange($actualPopulation, $selectedPopulation)
+    {
+        $minMax = explode(',', $selectedPopulation);
+
+        if (count($minMax) == 1)
+        {
+            $minMax[0] *= 1000000;
+            return ($actualPopulation <= $minMax[0]);
+        }
+        else
+        {
+            $minMax[0] *= 1000000;
+            $minMax[1] *= 1000000;
+            return ($actualPopulation >= $minMax[0] && $actualPopulation <= $minMax[1]);
+        }
+    }
+
+    function getTheCountryNames($flagOfCountries)
+    {
+        $leftFlagCountryNames = "";
+        foreach ($flagOfCountries["countries"] as $country) :
+            if ($country != null)
+            {
+                $leftFlagCountryNames = $leftFlagCountryNames . '<span class="leftCountries">' . $country . "</span>";
+            }
+        endforeach;
+        return $leftFlagCountryNames;
     }
