@@ -192,6 +192,6 @@
     elseif ($lessThan6Flags == 1)
     {
         $statusPanelHTML = '<p class="congratulationPanel "><span class="yellowColor">Congradulation!!!</span> the Country is Found: <span class="yellowColor">' .
-                         '<?=$selectedCountry?></span>, Capital: <span class="yellowColor"><?=$countryCapital?></span>, Language: ' .
-                         '<span class="yellowColor"><?=$selectedLanguage?></span> and Population: <span class="yellowColor"><?=$countryPopulation?></span></p>';
+                         $selectedCountry . '</span>, Capital: <span class="yellowColor">' . $countryCapital . '</span>, Language: ' .
+                         '<span class="yellowColor">' . $selectedLanguage . '</span> and Population: <span class="yellowColor">' . $countryPopulation . '</span></p>';
     }
