@@ -150,7 +150,7 @@
 
     $flagTitleSeq = 0;
     $languateTitleSeq = 0;
-    $howManyFlags= count($flagOfCountries['countries']); Tools::dump($lessThan6Flags);
+    $howManyFlags= count($flagOfCountries['countries']);
     // How many Flags left in the list (excluding the null ones)
     foreach ($flagOfCountries["countries"] as $country) :
         if ($country != null)
