@@ -1,20 +1,7 @@
 <!-- Beginning of the Flag Selection; -->
                 <div id="worldFlags" class="center">
                     <p id="flagTitle">Select a Flag to Find the Country in <?=$region?></p>
-                    <?php if ($selectedFlag == -1) : ?>
-                        <p class="error">Please Select a Flag</p>
-                    <?php elseif ($selectedPopulationError) : ?>
-                        <p class="error">Selected Language is not spoken in the selected Flag's Country, please choose another one</p>
-                    <?php elseif ($selectedLanguageError) : ?>
-                        <p class="error">Selected Flag's Country Population does not fit the selected Population Criteria</p>
-                    <?php elseif ($selectedCapitalError) : ?>
-                        <p class="error">Selected Flag's Country Capital City does not Start with the entered Letter</p>
-                    <?php elseif ($lessThan6Flags == 1) : ?>
-                        <p class="congratulationPanel "><span class="yellowColor">Congradulation!!!</span> the Country is Found: <span class="yellowColor"><?=$selectedCountry?></span>,
-                            Capital: <span class="yellowColor"><?=$countryCapital?></span>, Language: <span class="yellowColor"><?=$selectedLanguage?></span>
-                            and Population: <span class="yellowColor"><?=$countryPopulation?></span>
-                        </p>
-                    <?php endif; ?>
+                    <?=$statusPanelHTML?>
                     <div id="flags">
                     <!-- flags img statements are read via PHP through a JSON file -->
                     <?php while ($flagTitleSeq < $howManyFlags) { ?>

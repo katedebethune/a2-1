@@ -94,7 +94,8 @@
                 {
                     $country = null;
                 }
-            endforeach;;
+            endforeach;
+            unset($country);
         }
     }
     /*
@@ -119,7 +120,8 @@
                 {
                     $country = null;
                 }
-            endforeach;;
+            endforeach;
+            unset($country);
         }
     }
     /*
@@ -144,10 +146,10 @@
                 {
                     $country = null;
                 }
-            endforeach;;
+            endforeach;
+            unset($country);
         }
     }
-
     $flagTitleSeq = 0;
     $languateTitleSeq = 0;
     $howManyFlags= count($flagOfCountries['countries']);
@@ -157,7 +159,7 @@
         {
             $lessThan6Flags++;
         }
-    endforeach;;
+    endforeach;
     // Started with -1
     if ($lessThan6Flags > -1)
     {
@@ -168,4 +170,28 @@
     {
         $countryCapital = $capitalOfCountries[$selectedCountry]["capital"];
         $countryPopulation = $populationOfCountries[$selectedCountry]["population"];
+    }
+    // Error and Status Panel Configuration
+    $statusPanelHTML = "<!-- -->";
+    if ($selectedFlag == -1)
+    {
+        $statusPanelHTML = '<p class="error">Please Select a Flag</p>';
+    }
+    elseif ($selectedPopulationError)
+    {
+        $statusPanelHTML = '<p class="error">Selected Flag\'s Country Population does not fit the selected Population Criteria</p>';
+    }
+    elseif ($selectedLanguageError)
+    {
+        $statusPanelHTML = '<p class="error">Selected Language is not spoken in the selected Flag\'s Country, please choose another one</p>';
+    }
+    elseif ($selectedCapitalError)
+    {
+        $statusPanelHTML = '<p class="error">Selected Flag\'s Country Capital City does not Start with the entered Letter</p>';
+    }
+    elseif ($lessThan6Flags == 1)
+    {
+        $statusPanelHTML = '<p class="congratulationPanel "><span class="yellowColor">Congradulation!!!</span> the Country is Found: <span class="yellowColor">' .
+                         '<?=$selectedCountry?></span>, Capital: <span class="yellowColor"><?=$countryCapital?></span>, Language: ' .
+                         '<span class="yellowColor"><?=$selectedLanguage?></span> and Population: <span class="yellowColor"><?=$countryPopulation?></span></p>';
     }
