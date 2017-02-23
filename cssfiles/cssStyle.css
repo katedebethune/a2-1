@@ -80,10 +80,28 @@ h1, h2, h3 {
     font-weight: bold;
 }
 
+.error {
+    color: red;
+    font-weight: bold;
+    background-color: white;
+    font-size: 18px;
+}
+
 #informationPanel {
     font-weight: bold;
     color: blue;
     background-color: gray;
+}
+
+.yellowColor {
+    color: yellow;
+}
+
+.congratulationPanel {
+    font-weight: bold;
+    color: blue;
+    background-color: red;
+    font-size: 20px;
 }
 
 .center
@@ -178,4 +196,5 @@ textarea {
 .button {
   /* To position the buttons to the same position of the text fields */
   padding-left: 90px; /* same size as the label elements */
+  font-size: 18px;
 }

@@ -25,6 +25,7 @@ function selectAFlag(event)
     document.getElementById(event.target.id).classList.remove("plainFlags");
     document.getElementById(event.target.id).setAttribute("class", "selectedFlags");
     document.getElementById("savedFlagId").value = event.target.id;
+    triggerAMouseEvent("submitButton");
 }
 
 function resetSelectionValues()
